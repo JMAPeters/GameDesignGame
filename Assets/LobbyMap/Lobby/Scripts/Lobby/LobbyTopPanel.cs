@@ -9,7 +9,7 @@ namespace Prototype.NetworkLobby
         public bool isInGame = false;
         public static bool staticIsInGame;
 
-        protected bool isDisplayed = true;
+        protected static bool isDisplayed = true;
         protected Image panelImage;
 
         protected bool chooseCharacter = false;
@@ -126,6 +126,11 @@ namespace Prototype.NetworkLobby
         public static bool IsInGame()
         {
             return staticIsInGame;
+        }
+        
+        public static bool IsDisplayed()
+        {
+            return isDisplayed;
         }
     }
 }

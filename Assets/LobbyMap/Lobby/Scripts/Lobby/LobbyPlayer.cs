@@ -27,7 +27,6 @@ namespace Prototype.NetworkLobby
         //OnMyName function will be invoked on clients when server change the value of playerName
         [SyncVar(hook = "OnMyName")]
         public string playerName = "";
-        static string playerName2 = "";
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.white;
 
@@ -187,7 +186,6 @@ namespace Prototype.NetworkLobby
         public void OnMyName(string newName)
         {
             playerName = newName;
-            playerName2 = newName;
             nameInput.text = playerName;
         }
 
@@ -312,10 +310,6 @@ namespace Prototype.NetworkLobby
                     break;
                 }
             }
-        }
-        public static string GetPlayerName()
-        {
-            return playerName2;
         }
     }
 }

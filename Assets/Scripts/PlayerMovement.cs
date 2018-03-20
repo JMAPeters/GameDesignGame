@@ -16,8 +16,6 @@ public class PlayerMovement : NetworkBehaviour
     public GameObject bulletPref;
     public Transform bulletSpawn;
 
-
-    static bool inMenu = false;
     //bullshit
     Sprite testPlayerSprite;
     public int bulletSpeed;
@@ -38,8 +36,8 @@ public class PlayerMovement : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        if (inMenu)
-            return;
+        //if (PauseMenu.IsOn)
+            //return;
 
         if (playerInActive)
             return;
@@ -100,7 +98,7 @@ public class PlayerMovement : NetworkBehaviour
     void CmdFire()
     {
         //Create the bullet from the bullet pref
-        var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
+        var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
 
         //Add veloctiy to the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
@@ -114,10 +112,5 @@ public class PlayerMovement : NetworkBehaviour
     public void inActive(bool value)
     {
         playerInActive = value;
-    }
-
-    public static void ToggleMenu()
-    {
-        inMenu = !inMenu;
     }
 }

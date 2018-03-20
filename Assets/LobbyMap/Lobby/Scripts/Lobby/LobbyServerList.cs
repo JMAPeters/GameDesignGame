@@ -60,6 +60,8 @@ namespace Prototype.NetworkLobby
 
                     o.GetComponent<LobbyServerEntry>().Populate(match, lobbyManager, (matches.Count % 2 == 0) ? OddServerColor : EvenServerColor);
 
+                    
+
                     o.transform.SetParent(serverListRect, false);
                 }
             }

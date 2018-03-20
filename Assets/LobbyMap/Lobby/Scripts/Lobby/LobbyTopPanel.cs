@@ -7,13 +7,11 @@ namespace Prototype.NetworkLobby
     public class LobbyTopPanel : MonoBehaviour
     {
         public bool isInGame = false;
-        public static bool staticIsInGame;
 
-        protected static bool isDisplayed = true;
+        protected bool isDisplayed = true;
         protected Image panelImage;
 
         protected bool chooseCharacter = false;
-        protected bool firstSpawn = true;
 
         public Toggle ToggleScout, ToggleSoldier, ToggleTank;
         string playerCharacter;
@@ -27,25 +25,16 @@ namespace Prototype.NetworkLobby
 
         void Update()
         {
-            staticIsInGame = isInGame;
             if (!isInGame)
                 return;
-        
-            if (!chooseCharacter)
-            {
-                if (!ToggleScout.IsActive())
-                {
-                    ToggleVisibility(!isDisplayed);
-                }
-            }
             else
-            {
-                if (firstSpawn)
+                if (!chooseCharacter)
                 {
-                    PlayerHealth.FirstSpawn();
-                    firstSpawn = false;
+                    if (!ToggleScout.IsActive())
+                    {
+                        ToggleVisibility(!isDisplayed);
+                    }
                 }
-            }
 
             ToggleCharacter();
 
@@ -56,15 +45,9 @@ namespace Prototype.NetworkLobby
 
         }
 
-        public void SetPlayerCharacter()
-        {
-            ToggleVisibility(!isDisplayed);
-        }
-
         public void ToggleVisibility(bool visible)
         {
             isDisplayed = visible;
-            PlayerMovement.ToggleMenu();
             foreach (Transform t in transform)
             {
                 t.gameObject.SetActive(isDisplayed);
@@ -81,7 +64,7 @@ namespace Prototype.NetworkLobby
             if (ToggleScout.isOn)
                 if (!ToggleSoldier.isOn || !ToggleTank.isOn)
                 {
-                    playerCharacter = "Scout";
+                    playerCharacter = "Spion";
                     ToggleSoldier.interactable = false;
                     ToggleTank.interactable = false;
                     chooseCharacter = true;
@@ -121,16 +104,6 @@ namespace Prototype.NetworkLobby
                 PlayCharacterButton.interactable = true;
             else
                 PlayCharacterButton.interactable = false;
-        }
-
-        public static bool IsInGame()
-        {
-            return staticIsInGame;
-        }
-        
-        public static bool IsDisplayed()
-        {
-            return isDisplayed;
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Prototype.NetworkLobby
     public class LobbyTopPanel : MonoBehaviour
     {
         public bool isInGame = false;
+        public static bool staticIsInGame;
 
         protected bool isDisplayed = true;
         protected Image panelImage;
@@ -26,6 +27,7 @@ namespace Prototype.NetworkLobby
 
         void Update()
         {
+            staticIsInGame = isInGame;
             if (!isInGame)
                 return;
         
@@ -119,6 +121,11 @@ namespace Prototype.NetworkLobby
                 PlayCharacterButton.interactable = true;
             else
                 PlayCharacterButton.interactable = false;
+        }
+
+        public static bool IsInGame()
+        {
+            return staticIsInGame;
         }
     }
 }

@@ -8,8 +8,10 @@ namespace Prototype.NetworkLobby
 {
     public class PlayerSetup : NetworkBehaviour
     {
-
+        public GameObject player;
+        static GameObject staticPlayer;
         public NetworkIdentity netID;
+        
 
         static GameObject spawnPoint;
         public GameObject spawnPoint_1;
@@ -23,6 +25,7 @@ namespace Prototype.NetworkLobby
 
         void Start()
         {
+            staticPlayer = player;
             SetSpawnPoint();
 
             playerName = LobbyPlayer.GetPlayerName();
@@ -83,6 +86,11 @@ namespace Prototype.NetworkLobby
         public static string GetTeam()
         {
             return team;
+        }
+
+        public static GameObject GetPlayer()
+        {
+            return staticPlayer;
         }
     }
 }

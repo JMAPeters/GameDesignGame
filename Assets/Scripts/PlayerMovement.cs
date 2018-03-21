@@ -9,9 +9,12 @@ public class PlayerMovement : NetworkBehaviour
     public float jumpSpeed;
     public float moveSpeed;
     public float maxSpeed;
+    private float armAngle;
     bool onPlanet;
     float spaceDrag = 0.01f;
     bool playerInActive;
+    GameObject Arm;
+    Vector3 playerToCursor;
 
     //Shooting
     public static GameObject player;

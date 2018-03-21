@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Prototype.NetworkLobby;
+using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerMovement : NetworkBehaviour
@@ -13,6 +14,7 @@ public class PlayerMovement : NetworkBehaviour
     bool playerInActive;
 
     //Shooting
+    public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
 
@@ -100,7 +102,7 @@ public class PlayerMovement : NetworkBehaviour
     void CmdFire()
     {
         //Create the bullet from the bullet pref
-        var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
+        var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
 
         //Add veloctiy to the bullet
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;

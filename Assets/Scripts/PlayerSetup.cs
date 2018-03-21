@@ -26,24 +26,8 @@ namespace Prototype.NetworkLobby
         void Start()
         {
             staticPlayer = player;
-            SetSpawnPoint();
-
             playerName = LobbyPlayer.GetPlayerName();
-            setName();
-        }
-                
-        void setName()
-        {
-            playerNameText.text = playerName;
-            if (team == "red")
-                playerNameText.color = Color.red;
-            if (team == "blue")
-                playerNameText.color = Color.blue;
-        }
-
-        void setNameToClients()
-        {
-            
+            SetSpawnPoint();
         }
 
         public void SetSpawnPoint()
@@ -83,6 +67,8 @@ namespace Prototype.NetworkLobby
             return deaths;
         }
 
+
+
         public static string GetTeam()
         {
             return team;
@@ -101,4 +87,33 @@ namespace Prototype.NetworkLobby
             if (team == "red")
                 playerNameText.color = Color.red;
             if (team == "blue")
-                playerNameText.color = Color.blue;*/
+                playerNameText.color = Color.blue;
+     * 
+     CmdSetName(playerName, team); //START
+     
+     
+        [Command]
+        void CmdSetName(string name, string team)
+        {
+            playerName = name;
+
+            RpcPlayerName(name, team);
+        }
+
+        [ClientRpc]
+        void RpcPlayerName(string name, string team)
+        {
+            playerNameText.text = name;
+            if (team == "red")
+                playerNameText.color = Color.red;
+            if (team == "blue")
+                playerNameText.color = Color.blue;
+        }
+
+        void Update()
+        {
+            RpcPlayerName(playerName, team);
+        }
+     
+     
+     */

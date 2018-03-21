@@ -50,7 +50,6 @@ namespace Prototype.NetworkLobby
                         else
                         {
                             Vector2 mouseToPlayer = new Vector2(player.transform.position.x - mainCamera.transform.position.x, player.transform.position.y - mainCamera.transform.position.y);
-                            Debug.Log(mouseToPlayer);
                             mouseToPlayer.Normalize();
                             camPosition += mouseToPlayer * 1 / (MaxdistanceBetweenPlayerAndCam * (MaxdistanceBetweenPlayerAndCam - mouseToPlayer.magnitude));
                             mainCamera.transform.position = new Vector3(camPosition.x, camPosition.y, mainCamera.transform.position.z);

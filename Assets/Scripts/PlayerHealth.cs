@@ -25,7 +25,7 @@ namespace Prototype.NetworkLobby
             {
                 if (isLocalPlayer)
                 {
-                    transform.position = spawnPoint.transform.localPosition;//new Vector2(spawnPoint.transform.position.x + 10, spawnPoint.transform.position.y+ 10);
+                    transform.position = spawnPoint.transform.localPosition;
                     firstSpawn = false;
                 }
             }

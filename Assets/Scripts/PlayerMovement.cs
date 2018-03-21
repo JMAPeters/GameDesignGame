@@ -12,14 +12,22 @@ public class PlayerMovement : NetworkBehaviour
     private float armAngle;
     bool onPlanet;
     float spaceDrag = 0.01f;
-    bool playerInActive;
+    bool playerInActive; 
     GameObject Arm;
     Vector3 playerToCursor;
+    public enum gunType
+    {
+        shotgun,
+        sniper,
+        AR
+    };
 
+   public static gunType guntype;
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
+    private float lastShot = 0.0f;
 
 
     static bool inMenu = false;
@@ -83,16 +91,42 @@ public class PlayerMovement : NetworkBehaviour
             if (onPlanet)
             rbPlayer.angularVelocity = 0;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Time.time > 1 / GunSpecs.fireRate + lastShot)
         {
-            CmdFire(); 
+            if (Input.GetMouseButton(0) && guntype == gunType.AR ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.sniper)
+            {
+                CmdFire();
+                lastShot = Time.time;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         onPlanet = true;
         spaceDrag = 1f;
+
+        if (collision.gameObject.tag == "Crate")
+        {
+            CrateGenerator.currentCrates -= 1;
+            Destroy(collision.gameObject);
+            switch(Random.Range(0, 2))
+            {
+                case 0:
+                    guntype = gunType.sniper;
+                    break;
+                case 1:
+                    guntype = gunType.AR;
+                    break;
+                case 2:
+                    guntype = gunType.shotgun;
+                    break;
+             }
+           GunSpecs.SwitchWeapon();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

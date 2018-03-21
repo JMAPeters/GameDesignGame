@@ -5,7 +5,6 @@ using UnityEngine;
 public class CrateGenerator : MonoBehaviour
 {
     public GameObject Crate;
-    public static List<GameObject> Crates;
     public int maxCrateCount, padding;
     
     private int xPos, yPos, random;
@@ -13,9 +12,11 @@ public class CrateGenerator : MonoBehaviour
     public float spawnDelay;
     public GameObject planet1, planet2;
 
+    public static int currentCrates = 0;
+
     void Start()
     {
-        Crates = new List<GameObject>();
+     
     }
 
     void Update()
@@ -31,7 +32,7 @@ public class CrateGenerator : MonoBehaviour
         }
         else
         {
-            if (Crates.Count < maxCrateCount)
+            if (currentCrates < maxCrateCount)
             CreateCrate();
 
             spawnTimer = spawnDelay;
@@ -40,9 +41,9 @@ public class CrateGenerator : MonoBehaviour
 
     void CreateCrate()
     {
-        Crates.Add(Crate);
         Instantiate(Crate);
         Crate.transform.position = RandomPosition();
+        currentCrates += 1; 
     }
 
     private Vector2 RandomPosition()
@@ -73,9 +74,5 @@ public class CrateGenerator : MonoBehaviour
     }
 
 
-
-    public static List<GameObject> GetCrates()
-    {
-        return Crates;
-    }
+   
 }

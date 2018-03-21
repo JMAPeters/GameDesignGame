@@ -6,12 +6,13 @@ namespace Prototype.NetworkLobby
     {
         static GameObject player;
 
-        public int bulletDamage;
+        int bulletDamage;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag == "Player")
             {
+                bulletDamage = GunSpecs.damage;
                 var collisionObject = collision.gameObject;
                 var health = collisionObject.GetComponent<PlayerHealth>();
 

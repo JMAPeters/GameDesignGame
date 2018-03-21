@@ -386,7 +386,7 @@ namespace Prototype.NetworkLobby
                 }
             }
             int random = Random.Range(0,4);
-            ServerChangeScene(levels[random]);
+            ServerChangeScene(levels[0]);
             Debug.Log(levels[random]);
     }
 

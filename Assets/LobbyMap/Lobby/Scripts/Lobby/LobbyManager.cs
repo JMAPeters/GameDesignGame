@@ -24,6 +24,8 @@ namespace Prototype.NetworkLobby
         [Header("UI Reference")]
         public LobbyTopPanel topPanel;
 
+        private string[] levels = new string[5] {"level1", "level2", "level3","level4", "level5"};
+
         public RectTransform mainMenuPanel;
         public RectTransform lobbyPanel;
 
@@ -383,9 +385,10 @@ namespace Prototype.NetworkLobby
                     (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
                 }
             }
-
-            ServerChangeScene(playScene);
-        }
+            int random = Random.Range(0,4);
+            ServerChangeScene(levels[random]);
+            Debug.Log(levels[random]);
+    }
 
         // ----------------- Client callbacks ------------------
 

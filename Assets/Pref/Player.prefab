@@ -414,7 +414,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58203c1d9d85adf4798c244e21d9215b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!114 &114446280710998880
+=======
+  player: {fileID: 1389749847175632}
+--- !u!114 &114344928994482140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389749847175632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8511290157dc2cd4aaee4c16f8cfc2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 224462314598901972}
+--- !u!114 &114533281942374858
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

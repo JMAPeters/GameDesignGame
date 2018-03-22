@@ -12,9 +12,10 @@ public class PlayerMovement : NetworkBehaviour
     private float armAngle;
     bool onPlanet;
     float spaceDrag = 0.01f;
-    bool playerInActive; 
+    bool playerInActive;
     GameObject Arm;
     Vector3 playerToCursor;
+<<<<<<< HEAD
     public enum gunType
     {
         shotgun,
@@ -25,12 +26,18 @@ public class PlayerMovement : NetworkBehaviour
 
     public Sprite pistolsprite;
    public static gunType guntype;
+=======
+
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
+<<<<<<< HEAD
     private float lastShot = 0.0f;
     GameObject gun;
+=======
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
 
 
     static bool inMenu = false;
@@ -94,8 +101,9 @@ public class PlayerMovement : NetworkBehaviour
             if (onPlanet)
             rbPlayer.angularVelocity = 0;
 
-        if (Time.time > 1 / GunSpecs.fireRate + lastShot)
+        if (Input.GetMouseButtonDown(0))
         {
+<<<<<<< HEAD
             if (Input.GetMouseButton(0) && guntype == gunType.AR ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
@@ -104,6 +112,9 @@ public class PlayerMovement : NetworkBehaviour
                 CmdFire();
                 lastShot = Time.time;
             }
+=======
+            Fire(); 
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
         }
         if (GunSpecs.ammo <= 0)
         {
@@ -119,9 +130,9 @@ public class PlayerMovement : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         onPlanet = true;
         spaceDrag = 1f;
+<<<<<<< HEAD
 
         if (collision.gameObject.tag == "Crate")
         {
@@ -142,6 +153,8 @@ public class PlayerMovement : NetworkBehaviour
            GunSpecs.SwitchWeapon();
            
         }
+=======
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -150,16 +163,24 @@ public class PlayerMovement : NetworkBehaviour
         spaceDrag = 0.01f;
     }
 
-    [Command]
-    void CmdFire()
+    void Fire()
     {
+<<<<<<< HEAD
 
         //Create the bullet from the bullet pref
         var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
+=======
+        Quaternion bulletRotation = bulletSpawn.rotation;
+        Vector2 bulletPosition = bulletSpawn.position;
+        CmdFire(bulletRotation, bulletPosition);
+    }
+>>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
 
-        //Add veloctiy to the bullet
+    [Command]
+    void CmdFire(Quaternion bulletRotation, Vector2 bulletPosition)
+    {
+        GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
-
         NetworkServer.Spawn(bullet);
         GunSpecs.ammo -= 1;
         //Destroy the bullet 

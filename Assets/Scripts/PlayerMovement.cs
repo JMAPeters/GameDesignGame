@@ -95,19 +95,21 @@ public class PlayerMovement : NetworkBehaviour
             if (onPlanet)
             rbPlayer.angularVelocity = 0;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            if (Input.GetMouseButton(0) && guntype == gunType.AR ||
+        
+            if (Time.time > 1 / GunSpecs.fireRate + lastShot)
+            {
+                if (Input.GetMouseButton(0) && guntype == gunType.AR ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
-            {
-                Fire();
-                lastShot = Time.time;
+                {
+                    Fire();
+                    lastShot = Time.time;
+
+                }
             }
             
-        }
+        
         if (GunSpecs.ammo <= 0)
         {
             guntype = gunType.pistol;

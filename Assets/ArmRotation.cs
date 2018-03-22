@@ -26,7 +26,7 @@ public class ArmRotation : MonoBehaviour {
             player.GetComponent<SpriteRenderer>().flipY = true;
         else if (rotZ < 90 && rotZ > -90 && ((prevRotZ > 90 && prevRotZ < 180) || (prevRotZ > -180 && prevRotZ < -90)))
             player.GetComponent<SpriteRenderer>().flipY = false;
-        prevRotZ = rotZ;
+        prevRotZ = rotZ; 
 
 
         

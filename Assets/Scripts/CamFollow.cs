@@ -24,12 +24,16 @@ namespace Prototype.NetworkLobby
         {
             if (LobbyTopPanel.IsInGame()) 
                 {
-                camPosition = new Vector2(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y);
+                
+
+                camPosition =  new Vector2(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y);
                 mainCamera = GameObject.Find("Main Camera");
 
                 if (player != null)
                 {
-                    if (!LobbyTopPanel.IsDisplayed())
+                    transform.position = new Vector3 (player.transform.position.x, player.transform.position.y, -10);
+
+                    /*if (!LobbyTopPanel.IsDisplayed())
                     {
                         Cursor.lockState = CursorLockMode.Locked;
                         Vector2 prevMousePos = mousePos;
@@ -54,7 +58,7 @@ namespace Prototype.NetworkLobby
                             camPosition += mouseToPlayer * 1 / (MaxdistanceBetweenPlayerAndCam * (MaxdistanceBetweenPlayerAndCam - mouseToPlayer.magnitude));
                             mainCamera.transform.position = new Vector3(camPosition.x, camPosition.y, mainCamera.transform.position.z);
                         }
-                    }
+                    }*/
                 }
                 else
                 {

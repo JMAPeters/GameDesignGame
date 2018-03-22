@@ -80,6 +80,11 @@ public class getAttracted : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
+        if (collision.gameObject.tag == "Crate")
+            return;
+
         if (collision.gameObject.tag == "Planet")
             onPlanet = true;
     }

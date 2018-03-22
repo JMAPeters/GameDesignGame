@@ -19,15 +19,18 @@ public class PlayerMovement : NetworkBehaviour
     {
         shotgun,
         sniper,
-        AR
+        AR,
+        pistol
     };
 
+    public Sprite pistolsprite;
    public static gunType guntype;
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
     private float lastShot = 0.0f;
+    GameObject gun;
 
 
     static bool inMenu = false;
@@ -95,12 +98,23 @@ public class PlayerMovement : NetworkBehaviour
         {
             if (Input.GetMouseButton(0) && guntype == gunType.AR ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
-                Input.GetMouseButtonDown(0) && guntype == gunType.sniper)
+                Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
             {
                 CmdFire();
                 lastShot = Time.time;
             }
         }
+        if (GunSpecs.ammo <= 0)
+        {
+            guntype = gunType.pistol;
+            GunSpecs.damage = 5;
+            GunSpecs.fireRate = 3;
+            gun = GameObject.FindGameObjectWithTag("Gun");
+            gun.GetComponent<SpriteRenderer>().sprite = pistolsprite;
+            
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -126,6 +140,7 @@ public class PlayerMovement : NetworkBehaviour
                     break;
              }
            GunSpecs.SwitchWeapon();
+           
         }
     }
 
@@ -138,6 +153,7 @@ public class PlayerMovement : NetworkBehaviour
     [Command]
     void CmdFire()
     {
+
         //Create the bullet from the bullet pref
         var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
 
@@ -145,9 +161,10 @@ public class PlayerMovement : NetworkBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
 
         NetworkServer.Spawn(bullet);
-
+        GunSpecs.ammo -= 1;
         //Destroy the bullet 
         Destroy(bullet, 2.0f); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 
     public void inActive(bool value)

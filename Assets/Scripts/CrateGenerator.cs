@@ -72,7 +72,4 @@ public class CrateGenerator : MonoBehaviour
         Vector2 Position = new Vector2(xPos, yPos);
         return Position;
     }
-
-
-   
 }

@@ -67,8 +67,6 @@ namespace Prototype.NetworkLobby
             return deaths;
         }
 
-
-
         public static string GetTeam()
         {
             return team;

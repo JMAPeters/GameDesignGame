@@ -127,11 +127,17 @@ public class PlayerMovement : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        onPlanet = true;
-        spaceDrag = 1f;
+        if (collision.gameObject.tag == "Planet")
+        {
+            onPlanet = true;
+            spaceDrag = 1f;
+        }
 
         if (collision.gameObject.tag == "Crate")
         {
+            if (!isLocalPlayer)
+                return;
+
             CrateGenerator.currentCrates -= 1;
             Destroy(collision.gameObject);
             switch(Random.Range(0, 2))
@@ -146,15 +152,17 @@ public class PlayerMovement : NetworkBehaviour
                     guntype = gunType.shotgun;
                     break;
              }
-           GunSpecs.SwitchWeapon();
-           
+           GunSpecs.SwitchWeapon(); 
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        onPlanet = false;
-        spaceDrag = 0.01f;
+        if (collision.gameObject.tag == "Planet")
+        {
+            onPlanet = false;
+            spaceDrag = 0.01f;
+        }
     }
 
     void Fire()

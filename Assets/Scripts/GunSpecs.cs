@@ -17,11 +17,6 @@ public class GunSpecs : MonoBehaviour {
         sniperSpriteStatic = sniperSprite;
         shotgunSpriteStatic = shotgunSprite;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public static void SwitchWeapon()
     {

@@ -18,7 +18,7 @@ public class ArmRotation : MonoBehaviour {
         
 
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
-        Debug.Log(rotZ);
+       /* Debug.Log(rotZ);
 
         if (player == null)
             player = GameObject.Find("Player");
@@ -26,7 +26,7 @@ public class ArmRotation : MonoBehaviour {
             player.GetComponent<SpriteRenderer>().flipY = true;
         else if (rotZ < 90 && rotZ > -90 && ((prevRotZ > 90 && prevRotZ < 180) || (prevRotZ > -180 && prevRotZ < -90)))
             player.GetComponent<SpriteRenderer>().flipY = false;
-        prevRotZ = rotZ; 
+        prevRotZ = rotZ; */
 
 
         

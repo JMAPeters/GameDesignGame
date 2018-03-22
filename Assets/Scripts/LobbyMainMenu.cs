@@ -19,8 +19,9 @@ namespace Prototype.NetworkLobby
         public Toggle ToggleTD;
         public Toggle ToggleFFA;
 
-        uint roomSize = 0;
+        public static uint roomSize = 0;
         static int gameMode = 0;
+        
 
         public void OnEnable()
         {

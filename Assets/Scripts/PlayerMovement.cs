@@ -51,6 +51,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+
         //Only local player processes input
         if (!isLocalPlayer)
             return;
@@ -73,6 +74,7 @@ public class PlayerMovement : NetworkBehaviour
             var moveDirection = Quaternion.AngleAxis(transform.eulerAngles.z, Vector3.forward) * new Vector3(-1, -1, 0); //naar links en omlaag
             Vector2 moveForce = moveDirection.normalized * moveSpeed * 1000 * spaceDrag * Time.deltaTime;
             rbPlayer.angularVelocity = 0;
+            transform.GetComponent<SpriteRenderer>().flipX = true;
 
             if (rbPlayer.velocity.magnitude < maxSpeed)
             {
@@ -85,6 +87,7 @@ public class PlayerMovement : NetworkBehaviour
             var moveDirection = Quaternion.AngleAxis(transform.eulerAngles.z, Vector3.forward) * new Vector3(1, -1, 0); //naar rechts en omlaag
             Vector2 moveForce = moveDirection.normalized * moveSpeed * 1000 * spaceDrag * Time.deltaTime;
             rbPlayer.angularVelocity = 0;
+            transform.GetComponent<SpriteRenderer>().flipX = false;
 
             if (rbPlayer.velocity.magnitude < maxSpeed)
             {

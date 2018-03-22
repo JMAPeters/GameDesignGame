@@ -48,7 +48,7 @@ public class CrateGenerator : MonoBehaviour
 
     private Vector2 RandomPosition()
     {
-        random = Random.Range(0, 3);
+        random = Random.Range(0, 4);
         switch (random)
         {
             case 0:

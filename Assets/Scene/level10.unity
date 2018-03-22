@@ -317,6 +317,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4884684358094120, guid: f42c4b4272cc2034399f84111caf933d,
     type: 2}
   m_PrefabInternal: {fileID: 1789382503}
+--- !u!1 &117363633 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1730672269799084, guid: f42c4b4272cc2034399f84111caf933d,
+    type: 2}
+  m_PrefabInternal: {fileID: 371985026}
 --- !u!1001 &148046731
 Prefab:
   m_ObjectHideFlags: 0
@@ -2311,6 +2316,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4884684358094120, guid: f42c4b4272cc2034399f84111caf933d,
     type: 2}
   m_PrefabInternal: {fileID: 1130760410}
+--- !u!1 &1190981829 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1730672269799084, guid: f42c4b4272cc2034399f84111caf933d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1905792873}
 --- !u!1001 &1202248222
 Prefab:
   m_ObjectHideFlags: 0
@@ -3920,6 +3930,52 @@ Transform:
   m_PrefabParentObject: {fileID: 4884684358094120, guid: f42c4b4272cc2034399f84111caf933d,
     type: 2}
   m_PrefabInternal: {fileID: 1877434743}
+--- !u!1 &1886122072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1886122074}
+  - component: {fileID: 1886122073}
+  m_Layer: 0
+  m_Name: CrateGeneration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1886122073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886122072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692e4b788a1a94545b5181d0b4762dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Crate: {fileID: 1770284985442184, guid: 5be66183ea0ac094b84548e216199929, type: 2}
+  maxCrateCount: 18
+  padding: 8
+  spawnDelay: 3
+  planet1: {fileID: 117363633}
+  planet2: {fileID: 1190981829}
+--- !u!4 &1886122074
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886122072}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.58, y: 3.61, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1896479160
 Prefab:
   m_ObjectHideFlags: 0

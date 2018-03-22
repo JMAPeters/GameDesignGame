@@ -49,7 +49,7 @@ public class PlayerMovement : NetworkBehaviour
         //GetComponent<SpriteRenderer>().sprite = testPlayerSprite;
     }
 
-    void Update()
+    void FixedUpdate()
     {
 
         //Only local player processes input

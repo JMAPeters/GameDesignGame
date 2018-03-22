@@ -38,7 +38,7 @@ namespace Prototype.NetworkLobby
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Timer();
             CheckWinGame();

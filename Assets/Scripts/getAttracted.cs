@@ -17,7 +17,7 @@ public class getAttracted : MonoBehaviour
         Planets = GameObject.FindGameObjectsWithTag("Planet");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         nearestPlanet = NearestPlanet();
 

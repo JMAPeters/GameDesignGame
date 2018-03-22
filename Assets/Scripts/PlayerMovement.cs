@@ -15,7 +15,7 @@ public class PlayerMovement : NetworkBehaviour
     bool playerInActive;
     GameObject Arm;
     Vector3 playerToCursor;
-<<<<<<< HEAD
+
     public enum gunType
     {
         shotgun,
@@ -26,18 +26,12 @@ public class PlayerMovement : NetworkBehaviour
 
     public Sprite pistolsprite;
    public static gunType guntype;
-=======
-
->>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
-<<<<<<< HEAD
     private float lastShot = 0.0f;
     GameObject gun;
-=======
->>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
 
 
     static bool inMenu = false;
@@ -103,18 +97,16 @@ public class PlayerMovement : NetworkBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-<<<<<<< HEAD
+
             if (Input.GetMouseButton(0) && guntype == gunType.AR ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
                 Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
             {
-                CmdFire();
+                Fire();
                 lastShot = Time.time;
             }
-=======
-            Fire(); 
->>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
+            
         }
         if (GunSpecs.ammo <= 0)
         {
@@ -132,7 +124,6 @@ public class PlayerMovement : NetworkBehaviour
     {
         onPlanet = true;
         spaceDrag = 1f;
-<<<<<<< HEAD
 
         if (collision.gameObject.tag == "Crate")
         {
@@ -153,8 +144,6 @@ public class PlayerMovement : NetworkBehaviour
            GunSpecs.SwitchWeapon();
            
         }
-=======
->>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -165,16 +154,11 @@ public class PlayerMovement : NetworkBehaviour
 
     void Fire()
     {
-<<<<<<< HEAD
-
         //Create the bullet from the bullet pref
-        var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
-=======
         Quaternion bulletRotation = bulletSpawn.rotation;
         Vector2 bulletPosition = bulletSpawn.position;
         CmdFire(bulletRotation, bulletPosition);
     }
->>>>>>> e21ee22d2957929a2d75180551d01a0d8be0bc99
 
     [Command]
     void CmdFire(Quaternion bulletRotation, Vector2 bulletPosition)

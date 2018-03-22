@@ -29,6 +29,7 @@ public class PlayerMovement : NetworkBehaviour
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
+    public GameObject armPref;
     public Transform bulletSpawn;
     private float lastShot = 0.0f;
     GameObject gun;
@@ -39,8 +40,14 @@ public class PlayerMovement : NetworkBehaviour
     Sprite testPlayerSprite;
     public int bulletSpeed;
 
+    private AudioSource source;
+    public AudioClip arSound;
+    public AudioClip shotgunSound;
+    public AudioClip sniperSound;
+
     void Start()
     {
+        source = armPref.GetComponent<AudioSource>();
         //testPlayerSprite = Resources.Load<Sprite>("testplayer2");
     }
 
@@ -70,7 +77,7 @@ public class PlayerMovement : NetworkBehaviour
         }
 
         if (Input.GetKey(KeyCode.A))
-        {
+        {           
             var moveDirection = Quaternion.AngleAxis(transform.eulerAngles.z, Vector3.forward) * new Vector3(-1, -1, 0); //naar links en omlaag
             Vector2 moveForce = moveDirection.normalized * moveSpeed * 1000 * spaceDrag * Time.deltaTime;
             rbPlayer.angularVelocity = 0;
@@ -83,7 +90,7 @@ public class PlayerMovement : NetworkBehaviour
         }
         else
         if (Input.GetKey(KeyCode.D))
-        {
+        {            
             var moveDirection = Quaternion.AngleAxis(transform.eulerAngles.z, Vector3.forward) * new Vector3(1, -1, 0); //naar rechts en omlaag
             Vector2 moveForce = moveDirection.normalized * moveSpeed * 1000 * spaceDrag * Time.deltaTime;
             rbPlayer.angularVelocity = 0;
@@ -176,6 +183,26 @@ public class PlayerMovement : NetworkBehaviour
     [Command]
     void CmdFire(Quaternion bulletRotation, Vector2 bulletPosition)
     {
+        if (guntype == gunType.pistol)
+        {
+            source.clip = arSound;
+            source.PlayOneShot(arSound);
+        }
+        if (guntype == gunType.AR)
+        {
+            source.clip = arSound;
+            source.PlayOneShot(arSound);
+        }
+        if (guntype == gunType.sniper)
+        {
+            source.clip = sniperSound;
+            source.PlayOneShot(sniperSound);
+        }
+        if (guntype == gunType.shotgun)
+        {
+            source.clip = shotgunSound;
+            source.PlayOneShot(shotgunSound);
+        }
         GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
         NetworkServer.Spawn(bullet);

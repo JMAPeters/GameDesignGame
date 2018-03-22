@@ -16,10 +16,22 @@ public class PlayerMovement : NetworkBehaviour
     GameObject Arm;
     Vector3 playerToCursor;
 
+    public enum gunType
+    {
+        shotgun,
+        sniper,
+        AR,
+        pistol
+    };
+
+    public Sprite pistolsprite;
+   public static gunType guntype;
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;
     public Transform bulletSpawn;
+    private float lastShot = 0.0f;
+    GameObject gun;
 
 
     static bool inMenu = false;
@@ -83,16 +95,57 @@ public class PlayerMovement : NetworkBehaviour
             if (onPlanet)
             rbPlayer.angularVelocity = 0;
 
-        if (Input.GetMouseButtonDown(0))
+        
+            if (Time.time > 1 / GunSpecs.fireRate + lastShot)
+            {
+                if (Input.GetMouseButton(0) && guntype == gunType.AR ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
+                Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
+                {
+                    Fire();
+                    lastShot = Time.time;
+
+                }
+            }
+            
+        
+        if (GunSpecs.ammo <= 0)
         {
-            Fire(); 
+            guntype = gunType.pistol;
+            GunSpecs.damage = 5;
+            GunSpecs.fireRate = 3;
+            gun = GameObject.FindGameObjectWithTag("Gun");
+            gun.GetComponent<SpriteRenderer>().sprite = pistolsprite;
+            
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onPlanet = true;
         spaceDrag = 1f;
+
+        if (collision.gameObject.tag == "Crate")
+        {
+            CrateGenerator.currentCrates -= 1;
+            Destroy(collision.gameObject);
+            switch(Random.Range(0, 2))
+            {
+                case 0:
+                    guntype = gunType.sniper;
+                    break;
+                case 1:
+                    guntype = gunType.AR;
+                    break;
+                case 2:
+                    guntype = gunType.shotgun;
+                    break;
+             }
+           GunSpecs.SwitchWeapon();
+           
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -103,6 +156,7 @@ public class PlayerMovement : NetworkBehaviour
 
     void Fire()
     {
+        //Create the bullet from the bullet pref
         Quaternion bulletRotation = bulletSpawn.rotation;
         Vector2 bulletPosition = bulletSpawn.position;
         CmdFire(bulletRotation, bulletPosition);
@@ -114,9 +168,10 @@ public class PlayerMovement : NetworkBehaviour
         GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
         NetworkServer.Spawn(bullet);
-
+        GunSpecs.ammo -= 1;
         //Destroy the bullet 
         Destroy(bullet, 2.0f); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
 
     public void inActive(bool value)

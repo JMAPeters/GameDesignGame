@@ -2903,7 +2903,7 @@ MonoBehaviour:
   m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1866548713583758, guid: fd2a941df9258b74081a9da2e90498d5,
+  m_GamePlayerPrefab: {fileID: 1389749847175632, guid: fd2a941df9258b74081a9da2e90498d5,
     type: 2}
   m_LobbyScene: menuScene
   m_PlayScene: testScene
@@ -3777,6 +3777,7 @@ MonoBehaviour:
   ToggleScout: {fileID: 0}
   ToggleSoldier: {fileID: 0}
   ToggleTank: {fileID: 0}
+  PlayCharacterButton: {fileID: 0}
 --- !u!114 &114885187078195922
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -85,7 +85,7 @@ public class PlayerMovement : NetworkBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            CmdFire(); 
+            Fire(); 
         }
     }
 
@@ -101,15 +101,18 @@ public class PlayerMovement : NetworkBehaviour
         spaceDrag = 0.01f;
     }
 
-    [Command]
-    void CmdFire()
+    void Fire()
     {
-        //Create the bullet from the bullet pref
-        var bullet = Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
+        Quaternion bulletRotation = bulletSpawn.rotation;
+        Vector2 bulletPosition = bulletSpawn.position;
+        CmdFire(bulletRotation, bulletPosition);
+    }
 
-        //Add veloctiy to the bullet
+    [Command]
+    void CmdFire(Quaternion bulletRotation, Vector2 bulletPosition)
+    {
+        GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
-
         NetworkServer.Spawn(bullet);
 
         //Destroy the bullet 

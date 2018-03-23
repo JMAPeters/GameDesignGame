@@ -25,7 +25,7 @@ public class PlayerMovement : NetworkBehaviour
     };
 
     public Sprite pistolsprite;
-   public static gunType guntype;
+    public static gunType guntype;
     //Shooting
     public static GameObject player;
     public GameObject bulletPref;

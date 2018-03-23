@@ -274,8 +274,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.085, y: 0}
-  m_Size: {x: 0.17, y: 0.32}
+  m_Offset: {x: -0.085, y: 0.2990595}
+  m_Size: {x: 0.17, y: 0.9181191}
   m_Direction: 0
 --- !u!70 &70692028024676576
 CapsuleCollider2D:
@@ -289,8 +289,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.085, y: 0}
-  m_Size: {x: 0.17, y: 0.32}
+  m_Offset: {x: 0.085, y: 0.29824632}
+  m_Size: {x: 0.17, y: 0.9164927}
   m_Direction: 0
 --- !u!82 &82665381715218512
 AudioSource:
@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1389749847175632}
   netID: {fileID: 114555445437441448}
+  ScoutAnimation: {fileID: 0}
   spawnPoint_1: {fileID: 1908732957248366, guid: 30dbfed4479f7ee48963f7df93288b7e,
     type: 2}
   spawnPoint_2: {fileID: 1288762730322760, guid: 1c31b77d4c7278f42aa01e77d19bffd6,

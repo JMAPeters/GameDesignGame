@@ -4,7 +4,6 @@ namespace Prototype.NetworkLobby
 {
     public class BulletCollision : MonoBehaviour
     {
-        static GameObject player;
 
         int bulletDamage;
 
@@ -22,11 +21,6 @@ namespace Prototype.NetworkLobby
                 }
             }
             Destroy(gameObject);
-        }
-
-        public static void SetPlayer(GameObject _player)
-        {
-            player = _player;
         }
     }
 }

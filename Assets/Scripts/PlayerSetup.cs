@@ -21,7 +21,6 @@ namespace Prototype.NetworkLobby
         public Text playerNameText;
         static string team;
         static int deaths = 0;
-        int kills = 0;
 
         void Start()
         {

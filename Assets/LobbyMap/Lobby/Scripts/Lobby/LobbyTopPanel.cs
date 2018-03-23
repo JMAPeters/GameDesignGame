@@ -16,7 +16,7 @@ namespace Prototype.NetworkLobby
         protected bool firstSpawn = true;
 
         public Toggle ToggleScout, ToggleSoldier, ToggleTank;
-        string playerCharacter;
+        static string playerCharacter;
         public Button PlayCharacterButton;
 
         void Start()
@@ -131,6 +131,11 @@ namespace Prototype.NetworkLobby
         public static bool IsDisplayed()
         {
             return isDisplayed;
+        }
+
+        public static string GetPlayerCharacter()
+        {
+            return playerCharacter;
         }
     }
 }

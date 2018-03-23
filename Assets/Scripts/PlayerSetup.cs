@@ -11,7 +11,9 @@ namespace Prototype.NetworkLobby
         public GameObject player;
         static GameObject staticPlayer;
         public NetworkIdentity netID;
-        
+
+        Animator anim;
+        public Animation ScoutAnimation;
 
         static GameObject spawnPoint;
         public GameObject spawnPoint_1;
@@ -28,6 +30,22 @@ namespace Prototype.NetworkLobby
             playerName = LobbyPlayer.GetPlayerName();
             SetSpawnPoint();
         }
+
+        /*void Update()
+        {
+            if (LobbyTopPanel.GetPlayerCharacter() == "Scout")
+            {
+                ScoutAnimation.Play();
+            }
+            if (LobbyTopPanel.GetPlayerCharacter() == "Soldier")
+            {
+                anim.Play("Soldier animation");
+            }
+            if (LobbyTopPanel.GetPlayerCharacter() == "Tank")
+            {
+                anim.Play("Tank animation");
+            }
+        }*/
 
         public void SetSpawnPoint()
         {

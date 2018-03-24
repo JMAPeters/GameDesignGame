@@ -142,12 +142,13 @@ public class PlayerMovement : NetworkBehaviour
 
         if (collision.gameObject.tag == "Crate")
         {
+            CrateGenerator.currentCrates -= 1;
+            Destroy(collision.gameObject);
+
             if (!isLocalPlayer)
                 return;
 
-            CrateGenerator.currentCrates -= 1;
-            Destroy(collision.gameObject);
-            switch(Random.Range(0, 2))
+            switch (Random.Range(0, 2))
             {
                 case 0:
                     guntype = gunType.sniper;

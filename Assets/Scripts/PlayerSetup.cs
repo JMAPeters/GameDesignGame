@@ -11,13 +11,15 @@ namespace Prototype.NetworkLobby
         public GameObject player;
         static GameObject staticPlayer;
         public NetworkIdentity netID;
-
-        Animator anim;
-        public Animation ScoutAnimation;
+        public SpriteRenderer spriteRenderer;
 
         static GameObject spawnPoint;
         public GameObject spawnPoint_1;
         public GameObject spawnPoint_2;
+
+        public Sprite spriteScout, spriteSoldier, spriteTank;
+        string localSprite;
+        string serverSprite;
 
         static string playerName = "";
         public Text playerNameText;
@@ -31,21 +33,41 @@ namespace Prototype.NetworkLobby
             SetSpawnPoint();
         }
 
-        /*void Update()
+        void Update()
         {
-            if (LobbyTopPanel.GetPlayerCharacter() == "Scout")
+            if (isLocalPlayer)
             {
-                ScoutAnimation.Play();
+                localSprite = LobbyTopPanel.GetPlayerCharacter();
+                CmdSetSprite(localSprite);
             }
-            if (LobbyTopPanel.GetPlayerCharacter() == "Soldier")
+
+            if (isServer)
+                RpcSpriteUpdate();
+
+        }
+
+        [Command]
+        void CmdSetSprite(string sprite)
+        {
+            serverSprite = sprite;
+        }
+
+        
+        void RpcSpriteUpdate()
+        {
+            if (serverSprite == "Scout")
             {
-                anim.Play("Soldier animation");
+                spriteRenderer.sprite = spriteScout;
             }
-            if (LobbyTopPanel.GetPlayerCharacter() == "Tank")
+            if (serverSprite == "Soldier")
             {
-                anim.Play("Tank animation");
+                spriteRenderer.sprite = spriteSoldier;
             }
-        }*/
+            if (serverSprite == "Tank")
+            {
+                spriteRenderer.sprite = spriteTank;
+            }
+        }
 
         public void SetSpawnPoint()
         {

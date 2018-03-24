@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CrateGenerator : MonoBehaviour
+public class CrateGenerator : NetworkBehaviour
 {
     public GameObject Crate;
     public int maxCrateCount, padding;
@@ -13,11 +14,6 @@ public class CrateGenerator : MonoBehaviour
     public GameObject planet1, planet2;
 
     public static int currentCrates = 0;
-
-    void Start()
-    {
-     
-    }
 
     void Update()
     {
@@ -41,9 +37,10 @@ public class CrateGenerator : MonoBehaviour
 
     void CreateCrate()
     {
-        Instantiate(Crate);
+        GameObject crate = Instantiate(Crate);
         Crate.transform.position = RandomPosition();
-        currentCrates += 1; 
+        NetworkServer.Spawn(crate);
+        currentCrates += 1;
     }
 
     private Vector2 RandomPosition()

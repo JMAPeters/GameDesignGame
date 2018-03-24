@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ArmRotation : MonoBehaviour {
+public class ArmRotation : NetworkBehaviour {
 
-    GameObject player;
+    public GameObject player;
     float prevRotZ;
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
+
 	// Update is called once per frame
 	void Update () {
+        if (!player.GetComponent<NetworkIdentity>().isLocalPlayer)
+            return;
+
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -27,7 +28,7 @@ public class ArmRotation : MonoBehaviour {
         else if (rotZ < 90 && rotZ > -90 && ((prevRotZ > 90 && prevRotZ < 180) || (prevRotZ > -180 && prevRotZ < -90)))
             player.GetComponent<SpriteRenderer>().flipY = false;
         prevRotZ = rotZ; */
-
+         
 
         
     }

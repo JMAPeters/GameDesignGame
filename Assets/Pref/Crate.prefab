@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61348315850499834}
   - component: {fileID: 114878932285091888}
   - component: {fileID: 114675850488942232}
+  - component: {fileID: 114644844116307632}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Crate
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770284985442184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 8, z: 0}
+  m_LocalPosition: {x: -4, y: -6, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,6 +90,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &114644844116307632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1770284985442184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 91
+    i1: 230
+    i2: 97
+    i3: 131
+    i4: 234
+    i5: 10
+    i6: 192
+    i7: 148
+    i8: 184
+    i9: 69
+    i10: 72
+    i11: 226
+    i12: 22
+    i13: 25
+    i14: 153
+    i15: 41
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114675850488942232
 MonoBehaviour:
   m_ObjectHideFlags: 1

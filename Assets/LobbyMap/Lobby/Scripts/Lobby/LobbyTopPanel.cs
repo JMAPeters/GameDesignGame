@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using System.Collections;
 
 namespace Prototype.NetworkLobby
 {
-    public class LobbyTopPanel : MonoBehaviour
+    public class LobbyTopPanel : NetworkBehaviour
     {
         public bool isInGame = false;
         public static bool staticIsInGame;

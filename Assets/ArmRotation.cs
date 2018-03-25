@@ -6,7 +6,20 @@ using UnityEngine.Networking;
 public class ArmRotation : NetworkBehaviour {
 
     public GameObject player;
+    public SpriteRenderer spriteRenderer;
+    static SpriteRenderer staticSpriteRenderer;
+
+    public Sprite spriteArmScout, spriteArmSoldier, spriteArmTank;
+    static Sprite staticSpriteArmScout, staticSpriteArmSoldier, staticSpriteArmTank;
     float prevRotZ;
+
+    void Start()
+    {
+        staticSpriteRenderer = spriteRenderer;
+        staticSpriteArmScout = spriteArmScout;
+        staticSpriteArmSoldier = spriteArmSoldier;
+        staticSpriteArmTank = spriteArmTank;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -28,8 +41,21 @@ public class ArmRotation : NetworkBehaviour {
         else if (rotZ < 90 && rotZ > -90 && ((prevRotZ > 90 && prevRotZ < 180) || (prevRotZ > -180 && prevRotZ < -90)))
             player.GetComponent<SpriteRenderer>().flipY = false;
         prevRotZ = rotZ; */
-         
+    }
 
-        
+    public static void SetSprite(string character)
+    {
+        if (character == "Scout")
+        {
+            staticSpriteRenderer.sprite = staticSpriteArmScout;
+        }
+        if (character == "Soldier")
+        {
+            staticSpriteRenderer.sprite = staticSpriteArmSoldier;
+        }
+        if (character == "Tank")
+        {
+            staticSpriteRenderer.sprite = staticSpriteArmTank;
+        }
     }
 }

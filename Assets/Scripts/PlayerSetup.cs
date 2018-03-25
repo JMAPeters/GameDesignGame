@@ -18,7 +18,9 @@ namespace Prototype.NetworkLobby
         public GameObject spawnPoint_2;
 
         public Sprite spriteScout, spriteSoldier, spriteTank;
+        [SyncVar]
         string localSprite;
+        [SyncVar]
         string serverSprite;
 
         static string playerName = "";
@@ -41,8 +43,7 @@ namespace Prototype.NetworkLobby
                 CmdSetSprite(localSprite);
             }
 
-            if (isServer)
-                RpcSpriteUpdate();
+            SpriteUpdate();
 
         }
 
@@ -53,19 +54,22 @@ namespace Prototype.NetworkLobby
         }
 
         
-        void RpcSpriteUpdate()
+        void SpriteUpdate()
         {
             if (serverSprite == "Scout")
             {
                 spriteRenderer.sprite = spriteScout;
+                ArmRotation.SetSprite("Scout");
             }
             if (serverSprite == "Soldier")
             {
                 spriteRenderer.sprite = spriteSoldier;
+                ArmRotation.SetSprite("Soldier");
             }
             if (serverSprite == "Tank")
             {
                 spriteRenderer.sprite = spriteTank;
+                ArmRotation.SetSprite("Tank");
             }
         }
 

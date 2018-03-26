@@ -1248,7 +1248,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SCERTCH GAME
+  m_Text: SEARCH GAME
 --- !u!114 &11412334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2399,6 +2399,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1621261984253716, guid: 3a2869c7f68c1cc4eb2d2fe044acce0b, type: 2}
+  - {fileID: 1770284985442184, guid: 5be66183ea0ac094b84548e216199929, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

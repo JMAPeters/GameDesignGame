@@ -142,7 +142,7 @@ public class PlayerMovement : NetworkBehaviour
             if (!isLocalPlayer)
                 return;
 
-            switch (Random.Range(0, 2))
+            switch (Random.Range(0, 3))
             {
                 case 0:
                     guntype = gunType.sniper;

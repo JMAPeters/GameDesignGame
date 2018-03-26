@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crate: {fileID: 1770284985442184, guid: 5be66183ea0ac094b84548e216199929, type: 2}
-  maxCrateCount: 3
+  maxCrateCount: 6
   padding: 3
   spawnDelay: 5
   planet1: {fileID: 480232726}

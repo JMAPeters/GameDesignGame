@@ -33,6 +33,7 @@ public class PlayerMovement : NetworkBehaviour
     public Transform bulletSpawn;
     private float lastShot = 0.0f;
     GameObject gun;
+    public Quaternion shotgunAngle;
 
 
     static bool inMenu = false;
@@ -198,11 +199,13 @@ public class PlayerMovement : NetworkBehaviour
             source.clip = shotgunSound;
             source.PlayOneShot(shotgunSound);
         }
+
         GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
         NetworkServer.Spawn(bullet);
         if (GunSpecs.ammo >= 1)
             GunSpecs.ammo -= 1;
+
         //Destroy the bullet 
         Destroy(bullet, 2.0f); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -218,3 +221,18 @@ public class PlayerMovement : NetworkBehaviour
         inMenu = !inMenu;
     }
 }
+
+/*        if (guntype == gunType.shotgun)
+        {
+            GameObject bullet2 = Instantiate(bulletPref, bulletPosition, bulletRotation);
+            bullet2.GetComponent<Rigidbody2D>().velocity = bullet2.transform.right * bulletSpeed;
+            NetworkServer.Spawn(bullet2);
+            if (GunSpecs.ammo >= 1)
+                GunSpecs.ammo -= 1;
+
+            GameObject bullet3 = Instantiate(bulletPref, bulletPosition, bulletRotation);
+            bullet3.GetComponent<Rigidbody2D>().velocity = bullet3.transform.right * bulletSpeed;
+            NetworkServer.Spawn(bullet3);
+            if (GunSpecs.ammo >= 1)
+                GunSpecs.ammo -= 1;
+        }*/

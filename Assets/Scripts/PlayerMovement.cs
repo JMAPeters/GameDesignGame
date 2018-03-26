@@ -97,7 +97,7 @@ public class PlayerMovement : NetworkBehaviour
         }
         else
         if (onPlanet)
-            rbPlayer.velocity = Vector2.zero;
+            rbPlayer.angularVelocity = 0;
 
         
         if (Time.time > 1 / GunSpecs.fireRate + lastShot)

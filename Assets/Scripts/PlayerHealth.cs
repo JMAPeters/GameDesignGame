@@ -14,9 +14,14 @@ namespace Prototype.NetworkLobby
         static GameObject spawnPoint;
         static bool firstSpawn;
 
+        private AudioSource source;
+        public AudioClip deathSound;
+        public AudioClip killSound;
+
         void Start()
         {
             currentHealth = maxHealth;
+            source = player.GetComponent<AudioSource>();
         }
 
         void Update()
@@ -45,6 +50,18 @@ namespace Prototype.NetworkLobby
             currentHealth -= damage;
             if (currentHealth <= 0)
             {
+               
+                if (isLocalPlayer)
+                {
+                    source.clip = deathSound;
+                    source.Play();
+                }
+
+                else
+                {
+                    source.clip = killSound;
+                    source.Play();
+                }
                 RpcRespawn();
             }
         }

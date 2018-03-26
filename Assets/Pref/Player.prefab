@@ -221,7 +221,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbPlayer: {fileID: 50944661727722536}
-  jumpSpeed: 110
+  jumpSpeed: 100
   moveSpeed: 13
   maxSpeed: 2
   pistolsprite: {fileID: 21300000, guid: 80cf70f97c608654899fd50bbae84b9c, type: 3}

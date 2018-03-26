@@ -48,12 +48,6 @@ public class PlayerMovement : NetworkBehaviour
     void Start()
     {
         source = armPref.GetComponent<AudioSource>();
-        //testPlayerSprite = Resources.Load<Sprite>("testplayer2");
-    }
-
-    public override void OnStartLocalPlayer()
-    {
-        //GetComponent<SpriteRenderer>().sprite = testPlayerSprite;
     }
 
     void FixedUpdate()
@@ -102,22 +96,22 @@ public class PlayerMovement : NetworkBehaviour
             }
         }
         else
-            if (onPlanet)
-            rbPlayer.angularVelocity = 0;
+        if (onPlanet)
+            rbPlayer.velocity = Vector2.zero;
 
         
-            if (Time.time > 1 / GunSpecs.fireRate + lastShot)
+        if (Time.time > 1 / GunSpecs.fireRate + lastShot)
+        {
+            if (Input.GetMouseButton(0) && guntype == gunType.AR ||
+            Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
+            Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
+            Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
             {
-                if (Input.GetMouseButton(0) && guntype == gunType.AR ||
-                Input.GetMouseButtonDown(0) && guntype == gunType.shotgun ||
-                Input.GetMouseButtonDown(0) && guntype == gunType.sniper ||
-                Input.GetMouseButtonDown(0) && guntype == gunType.pistol)
-                {
-                    Fire();
-                    lastShot = Time.time;
+                Fire();
+                lastShot = Time.time;
 
-                }
             }
+        }
             
         
         if (GunSpecs.ammo <= 0)
@@ -207,7 +201,8 @@ public class PlayerMovement : NetworkBehaviour
         GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
         NetworkServer.Spawn(bullet);
-        GunSpecs.ammo -= 1;
+        if (GunSpecs.ammo >= 1)
+            GunSpecs.ammo -= 1;
         //Destroy the bullet 
         Destroy(bullet, 2.0f); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

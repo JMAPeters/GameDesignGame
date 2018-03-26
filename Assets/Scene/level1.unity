@@ -951,7 +951,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Kills: 0    Deads: 0'
+  m_Text: 'Deads: 0  Ammo: 00'
 --- !u!222 &924719773
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -111,7 +111,9 @@ namespace Prototype.NetworkLobby
         void PlayerStats()
         {
             int deathCount = PlayerSetup.GetDeaths();
-            playerStats.text = "Kills: " + /*kills*/"" + "Deaths: " + deathCount;
+            int ammo = GunSpecs.ammo;
+
+            playerStats.text = "Deaths: " + deathCount + " Ammo: " + ammo;
         }
     }
 }

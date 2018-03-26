@@ -446,8 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320ce5199e17a0647b5e45c8ee943494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1389749847175632, guid: fd2a941df9258b74081a9da2e90498d5, type: 2}
-  mainCamera: {fileID: 492940076}
   Xmin: -6.22
   Xmax: 6.52
   Ymin: -4.58
@@ -909,11 +907,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4587763266885912, guid: 1c31b77d4c7278f42aa01e77d19bffd6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.25
+      value: -8.9
       objectReference: {fileID: 0}
     - target: {fileID: 4587763266885912, guid: 1c31b77d4c7278f42aa01e77d19bffd6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.29
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 4587763266885912, guid: 1c31b77d4c7278f42aa01e77d19bffd6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1499,11 +1497,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4232790168567340, guid: 30dbfed4479f7ee48963f7df93288b7e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.66
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4232790168567340, guid: 30dbfed4479f7ee48963f7df93288b7e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.13
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4232790168567340, guid: 30dbfed4479f7ee48963f7df93288b7e, type: 2}
       propertyPath: m_LocalPosition.z

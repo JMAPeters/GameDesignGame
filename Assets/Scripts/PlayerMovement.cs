@@ -174,6 +174,8 @@ public class PlayerMovement : NetworkBehaviour
         Quaternion bulletRotation = bulletSpawn.rotation;
         Vector2 bulletPosition = bulletSpawn.position;
         CmdFire(bulletRotation, bulletPosition);
+        if (GunSpecs.ammo >= 1)
+            GunSpecs.ammo -= 1;
     }
 
     [Command]
@@ -203,8 +205,7 @@ public class PlayerMovement : NetworkBehaviour
         GameObject bullet = Instantiate(bulletPref, bulletPosition, bulletRotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.right * bulletSpeed;
         NetworkServer.Spawn(bullet);
-        if (GunSpecs.ammo >= 1)
-            GunSpecs.ammo -= 1;
+
 
         //Destroy the bullet 
         Destroy(bullet, 2.0f); /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

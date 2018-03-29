@@ -30,7 +30,9 @@ namespace Prototype.NetworkLobby
 
         void Start()
         {
-            staticPlayer = player;
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer) 
+                staticPlayer = player;
+
             playerName = LobbyPlayer.GetPlayerName();
             SetSpawnPoint();
         }
